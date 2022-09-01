@@ -1,134 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:medre/Medicine1Container.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'Medicine2Container.dart';
-import 'Medicine3Container.dart';
+import './login_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_simple_login/Medicine1Container.dart';
+const kBorderShape =RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20.0)));
 var medicineContainerCounter = 2;
 var kPrimaryTeal = Colors.teal[400];
 var kSecondaryGreen = Color(0xFF82DBD8);
-const kBorderShape =RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20.0)));
-BuildContext context = context;
 
-double kscreenWidth = MediaQuery.of(context).size.width;
-double kscreenHeight = MediaQuery.of(context).size.height;
+void main() => runApp(LoginUI());
 
-TextEditingController PhoneNumber = new TextEditingController();
+class LoginUI extends StatelessWidget {
+  const LoginUI({Key? key}) : super(key: key);
 
-
-
-void main() {
-  runApp(const MyApp());
-}
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'MEDre',
+      debugShowCheckedModeBanner: false,
+      title: "Flutter Login UI",
       theme: ThemeData(
-
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.teal,
       ),
-      home: const MyHomePage(title: 'medRE'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-
-
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  //values for toggle switches
-
-
-
-  //variables for sending message
-  String message = "";
-  String recipents = "";
-
-
-  @override
-  Widget build(BuildContext context) {
-
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: kPrimaryTeal,
-        title: Text(widget.title),
-      ),
-      body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(height: 15,),
-              TextField(
-                controller: PhoneNumber,
-                onChanged: (String value2){
-                  recipents = value2;
-                },
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: "Enter Patient's Phone Number" ,
-                ),
-              ),
-
-
-              Medicine1Container(),
-               Medicine2Container(),
-              Medicine3Container(),
-
-              MaterialButton(
-                child: Text('Add Medicine'),
-                  onPressed: (){
-                    setState(() {
-                      visible2 =true;
-
-                      if(medicineContainerCounter == 3){
-                        visible3 = true;
-                      }
-                      medicineContainerCounter++;
-
-                    });
-                  }),
-
-
-
-
-
-              MaterialButton(
-                shape: kBorderShape,
-                child: Text("Send Prescription", style: TextStyle(color:Colors.white),),
-                color:kSecondaryGreen,
-                  onPressed: () async{
-                  launch('sms:$recipents?body= $medicine1($timing1morning$timing1afternoon$timing1night)$medicine2($timing2morning$timing2afternoon$timing2night)$medicine3($timing3morning$timing3afternoon$timing3night)');
-                  setState(() {
-
-                  });
-
-                  },
-
-              ),
-
-            ],
+      home: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: const Text(
+            "Login Screen",
           ),
         ),
+        body: const LoginScreen(),
       ),
-
     );
   }
 }
-
-
-
