@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'homePage.dart';
+
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -71,18 +73,18 @@ class LoginScreen extends StatelessWidget {
                 child: MaterialButton(
                   onPressed: (){
 
-                    onPressed: () {
+
                       print('B3 pressed');
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context){
-                              return MaterialApp();
+                              return HomePage();
                             }
                         ),
                       );
 
-                    };
+
                   },
                   child: const Text(
                     "LOGIN",
