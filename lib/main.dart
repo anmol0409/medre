@@ -6,9 +6,7 @@ const kBorderShape =RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius
 var medicineContainerCounter = 2;
 var kPrimaryTeal = Colors.teal[400];
 var kSecondaryGreen = Color(0xFF82DBD8);
-
 void main() => runApp(LoginUI());
-
 class LoginUI extends StatelessWidget {
   const LoginUI({Key? key}) : super(key: key);
 
